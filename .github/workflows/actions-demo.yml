@@ -10,7 +10,7 @@ jobs:
     steps:
       - id: first
       - run: echo "$test is $test1"
-      - run: echo "::set-output name=json_Data::{"test":"test123"}"
+      - run: echo "::set-output name=json_Data::1.2.3"
         env:
           test1: Mona
   second:
