@@ -10,7 +10,6 @@ jobs:
       run: |
         export JSON_DATA='{"test":"test123"}'
         echo "::set-output name=json_data::${JSON_DATA}"
-        echo "::set-env name=FOO::1234"
     outputs:
       json_data: ${{ steps.identify.outputs.json_data }}
       
@@ -20,4 +19,3 @@ jobs:
     steps:
     - run: |
         echo "JSON_DATA : ${{ needs.first-job.outputs.json_data }}"
-        echo "evn : $FOO"
