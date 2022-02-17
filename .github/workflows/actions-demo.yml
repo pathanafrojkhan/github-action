@@ -21,7 +21,8 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
+      - run: cd /home/runner/work/github-action/github-action
+      - run: ls
       - name: Install Dependencies
         run: npm install
 
