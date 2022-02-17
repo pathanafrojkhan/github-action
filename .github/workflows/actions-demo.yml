@@ -23,6 +23,7 @@ jobs:
             ${{ runner.os }}-
       - run: cd /home/runner/work/github-action/github-action
       - run: ls
+      - run: pwd
       - name: Install Dependencies
         run: npm install
 
