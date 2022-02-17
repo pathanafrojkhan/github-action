@@ -11,6 +11,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Cache node modules
+        id: myCacheStep
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -24,10 +25,11 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
+        if: steps.myCacheStep.outputs.cache-hit != 'true'
         run: npm install
         #run: npm ci
-      - name: npm init
-        run: npm init -y
+#       - name: npm init
+#         run: npm init -y
 
 #       - name: Install dependencies
 #         run: |
