@@ -8,16 +8,21 @@ jobs:
     env:
       test: Hello
     steps:
+      - id: first
       - run: echo "$test is $test1"
+      - run: echo "::set-output name=json_Data::{"test":"test123"}"
         env:
           test1: Mona
   second:
     needs: first
     runs-on: ubuntu-latest
     steps:
+      - id: second
       - run: echo "$test"
+      - run: echo "${{ jobs.first.steps.first.outputs.json_Data }}"
   third:
     needs: second
     runs-on: ubuntu-latest
     steps:
+      - id: third
       - run: echo "third"
