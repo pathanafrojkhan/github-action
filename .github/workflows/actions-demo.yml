@@ -24,7 +24,8 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: npm install
+        #run: npm install
+        run: npm ci
 
       - name: Build
         run: npm build
