@@ -9,8 +9,7 @@ jobs:
       test: Hello
     steps:
       - id: json_data_first
-      #- run: echo "$test is $test1"
-      - run: echo "::set-output name=json_Data::1.2.3"
+      - run: echo "$test is $test1"
         env:
           test1: Mona
   second:
@@ -18,8 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: second
-      #- run: echo "$test"
-      - run: echo "${{ jobs.first.steps.json_data_first.outputs.json_Data }}"
+      - run: echo "$test"
   third:
     needs: second
     runs-on: ubuntu-latest
