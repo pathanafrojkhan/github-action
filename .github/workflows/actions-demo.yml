@@ -3,22 +3,16 @@ name: Caching with npm
 on: push
 
 jobs:
-  first:
-    runs-on: ubuntu-latest
-    env:
-      test: Hello
-    steps:
-      - run: echo "$test is $test1"
-        env:
-          test1: Mona
-  second:
-    needs: first
+  version_job:
+    name: Create version number
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$test"
-      
-  third:
-    needs: second
+    - id: version_step
+      run: echo "::set-output name=version_number::1.2.3"
+
+  output:
+    name: Output
     runs-on: ubuntu-latest
+    needs: version_job
     steps:
-      - run: echo "third"
+    - run: echo "${{ jobs.version_job.steps.version_step.outputs.version_number }}"
