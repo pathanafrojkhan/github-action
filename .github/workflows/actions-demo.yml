@@ -23,9 +23,19 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Install Dependencies
-        #run: npm install
-        run: npm ci
+#       - name: Install Dependencies
+#         #run: npm install
+#         run: npm ci
+
+      - name: Install dependencies
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi
 
       - name: Build
         run: npm build
