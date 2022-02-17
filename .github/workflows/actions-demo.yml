@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: second
-      - run: echo "$test"
+      #- run: echo "$test"
       - run: echo "${{ jobs.first.steps.json_data_first.outputs.json_Data }}"
   third:
     needs: second
