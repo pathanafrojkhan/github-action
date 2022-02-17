@@ -8,7 +8,6 @@ jobs:
     env:
       test: Hello
     steps:
-      - id: json_data_first
       - run: echo "$test is $test1"
         env:
           test1: Mona
@@ -16,11 +15,10 @@ jobs:
     needs: first
     runs-on: ubuntu-latest
     steps:
-      - id: second
       - run: echo "$test"
+      
   third:
     needs: second
     runs-on: ubuntu-latest
     steps:
-      - id: third
       - run: echo "third"
