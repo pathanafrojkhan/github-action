@@ -5,13 +5,17 @@ on: push
 jobs:
   first:
     runs-on: ubuntu-latest
+    env:
+      test: Hello
     steps:
-      - run: echo "first"
+      - run: echo "$test is $test1"
+        env:
+          test1: Mona
   second:
     needs: first
     runs-on: ubuntu-latest
     steps:
-      - run: echo "second"
+      - run: echo "$test"
   third:
     needs: second
     runs-on: ubuntu-latest
