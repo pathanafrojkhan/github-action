@@ -3,16 +3,19 @@ name: Caching with npm
 on: push
 
 jobs:
-  version_job:
-    name: Create version number
+  first-job:
+    runs-on: ubuntu-latest  
+    steps:
+    - id: identify
+      run: |
+        export GIT_PR_SHA="${{ github.sha }}"
+        echo "::set-output name=git_pr_sha::${GIT_PR_SHA}"
+    outputs:
+      git_pr_sha: ${{ steps.identify.outputs.git_pr_sha }}
+      
+  second-job:
+    needs: first-job
     runs-on: ubuntu-latest
     steps:
-    - id: version_step
-      run: echo "::set-output name=version_number::1.2.3"
-
-  output:
-    name: Output
-    runs-on: ubuntu-latest
-    needs: version_job
-    steps:
-    - run: echo "${{ jobs.version_job.steps.version_step.outputs.version_number }}"
+    - run: |
+        echo "${{ needs.first-job.outputs.git_pr_sha }}"
