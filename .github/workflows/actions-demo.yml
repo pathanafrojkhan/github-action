@@ -8,14 +8,14 @@ jobs:
     steps:
     - id: identify
       run: |
-        export GIT_PR_SHA="${{ github.sha }}"
-        echo "::set-output name=git_pr_sha::${GIT_PR_SHA}"
+        export JSON_DATA='{"test":"test123"}'
+        echo "::set-output name=json_data::${JSON_DATA}"
     outputs:
-      git_pr_sha: ${{ steps.identify.outputs.git_pr_sha }}
+      json_data: ${{ steps.identify.outputs.json_data }}
       
   second-job:
     needs: first-job
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "${{ needs.first-job.outputs.git_pr_sha }}"
+        echo "${{ needs.first-job.outputs.json_data }}"
