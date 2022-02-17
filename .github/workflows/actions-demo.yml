@@ -18,4 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "${{ needs.first-job.outputs.json_data }}"
+        echo "JSON_DATA : ${{ needs.first-job.outputs.json_data }}"
