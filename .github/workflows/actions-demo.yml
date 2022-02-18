@@ -22,7 +22,7 @@ jobs:
         env:
           Json_Data: ${{ needs.first-job.outputs.json_data }}
   third-job:
-    needs: first-job
+    needs: [second-job, first-job]
     runs-on: ubuntu-latest
     steps:
       - name: "Json Data third job"
