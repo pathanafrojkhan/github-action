@@ -8,7 +8,7 @@ jobs:
     steps:
     - id: identify
       run: |
-        export JSON_DATA='{"test":"test123"}'
+        export JSON_DATA='{"test":"test12334545"}'
         echo "::set-output name=json_data::${JSON_DATA}"
     outputs:
       json_data: ${{ steps.identify.outputs.json_data }}
