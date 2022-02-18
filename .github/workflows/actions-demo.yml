@@ -16,11 +16,14 @@ jobs:
   second-job:
     needs: first-job
     runs-on: ubuntu-latest
-#     steps:
-#       - env:
-#           Json_Data : ${{ needs.first-job.outputs.json_data }}
-#       - run: |
-#          echo "JSON_DATA for first job $Json_Data"
+    steps:
+      - name: "Json Data"
+        run: echo "JSON_DATA for first job $Json_Data"
+        env:
+          Json_Data: ${{ needs.first-job.outputs.json_data }}
+  third-job:
+    needs: second-job
+    runs-on: ubuntu-latest
     steps:
       - name: "Json Data"
         run: echo "JSON_DATA for first job $Json_Data"
