@@ -30,7 +30,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - name: Install Dependencies
+        run: echo "hello"
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -44,5 +45,4 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Install Dependencies
-        run: echo "hello"
+      
