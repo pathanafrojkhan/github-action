@@ -16,11 +16,16 @@ jobs:
   second-job:
     needs: first-job
     runs-on: ubuntu-latest
+#     steps:
+#       - env:
+#           Json_Data : ${{ needs.first-job.outputs.json_data }}
+#       - run: |
+#          echo "JSON_DATA  $Json_Data"
     steps:
-      - env:
-          Json_Data : ${{ needs.first-job.outputs.json_data }}
-      - run: |
-         echo "JSON_DATA : $Json_Data"
+      - name: "Json Data"
+        run: echo "JSON_DATA $Json_Data"
+        env:
+          Json_Data: ${{ needs.first-job.outputs.json_data }}
 
 # name: Caching with npm
 
