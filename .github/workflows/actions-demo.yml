@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Json Data"
-        run: echo "JSON_DATA for first job $Json_Data"
+        run: echo "first job data $Json_Data"
         env:
           Json_Data: ${{ needs.first-job.outputs.json_data }}
   third-job:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Json Data third job"
-        run: echo "JSON_DATA for first job in second jobs  $Json_Data_one"
+        run: echo "first job data  $Json_Data_one"
         env:
           Json_Data_one: ${{ needs.first-job.outputs.json_data }}
 
