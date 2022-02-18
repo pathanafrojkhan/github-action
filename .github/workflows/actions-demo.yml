@@ -23,7 +23,7 @@ jobs:
 #          echo "JSON_DATA for first job $Json_Data"
     steps:
       - name: "Json Data"
-        run: echo "JSON_DATA $Json_Data"
+        run: echo "JSON_DATA for first job $Json_Data"
         env:
           Json_Data: ${{ needs.first-job.outputs.json_data }}
 
