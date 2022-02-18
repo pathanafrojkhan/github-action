@@ -22,13 +22,13 @@ jobs:
         env:
           Json_Data: ${{ needs.first-job.outputs.json_data }}
   third-job:
-    needs: second-job
+    needs: first-job
     runs-on: ubuntu-latest
     steps:
-      - name: "Json Data"
-        run: echo "JSON_DATA for first job $Json_Data"
+      - name: "Json Data third job"
+        run: echo "JSON_DATA for first job in second jobs  $Json_Data_one"
         env:
-          Json_Data: ${{ needs.first-job.outputs.json_data }}
+          Json_Data_one: ${{ needs.first-job.outputs.json_data }}
 
 # name: Caching with npm
 
